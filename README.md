@@ -1,8 +1,8 @@
-# `<f-i18n-input>` [ ![Codeship Status for firmfirm/f-i18n-input](https://app.codeship.com/projects/273a5490-690b-0134-2187-625c6894da4e/status?branch=master)](https://app.codeship.com/projects/176581)
+# `<f-i18n-paper>` [ ![Codeship Status for firmfirm/f-i18n-paper](https://app.codeship.com/projects/273a5490-690b-0134-2187-625c6894da4e/status?branch=master)](https://app.codeship.com/projects/176581)
 
 paper-input extension, using `<f-i18n>` for label and error.
 
-For more info and demo see [documentation page](https://github.com/firmfirm/f-i18n-input/).
+For more info and demo see [documentation page](https://github.com/firmfirm/f-i18n-paper/).
 
 ## Install the Polymer-CLI
 
