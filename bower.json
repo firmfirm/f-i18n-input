@@ -1,6 +1,6 @@
 {
   "name": "f-i18n-input",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "paper-input extension, using f-i18n for label and error",
   "keywords": [
     "web-components",
