@@ -2,6 +2,15 @@
   "name": "f-i18n-input",
   "version": "0.1.0",
   "description": "paper-input extension, using f-i18n for label and error",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "i18n",
+    "input",
+    "paper-input"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/firmfirm/f-i18n-input/",
   "main": "f-i18n-input.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.7.0",

@@ -2,6 +2,8 @@
 
 paper-input extension, using `<f-i18n>` for label and error.
 
+For more info and demo see [documentation page](https://github.com/firmfirm/f-i18n-input/).
+
 ## Install the Polymer-CLI
 
 First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
