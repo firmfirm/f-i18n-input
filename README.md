@@ -2,7 +2,7 @@
 
 paper-input extension, using `<f-i18n>` for label and error.
 
-For more info and demo see [documentation page](https://github.com/firmfirm/f-i18n-paper/).
+For more info and demo see [documentation page](https://firmfirm.github.io/f-i18n-paper/).
 
 ## Install the Polymer-CLI
 
