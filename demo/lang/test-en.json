@@ -1,4 +1,5 @@
 {
   "label": { "message": "Label" },
-  "error-message": { "message": "Error message" }
+  "error-message": { "message": "Error message" },
+  "toast": { "message": "Translated toast!" }
 }
