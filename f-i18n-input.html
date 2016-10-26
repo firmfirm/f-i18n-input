@@ -20,10 +20,15 @@
     static get is() { return 'f-i18n-input'; }
     static get template() {
       if (!this.hasOwnProperty('_template')) {
-        this._template = Object.getPrototypeOf(this.prototype).constructor.template;
+        const baseClass = Object.getPrototypeOf(this.prototype).constructor;
+        this._template = baseClass.template.cloneNode(true);
         // Hack around current paper-input bug
         this._template.content.appendChild(html`
           <style>
+            :host {
+              --paper-input-container-underline_-_display: none;
+            }
+            iron-input { display: flex; }
             input { border: solid 1px gray; }
             paper-input-error {
               left: inherit;
