@@ -14,6 +14,7 @@
   "main": "f-i18n-input.html",
   "dependencies": {
     "polymer": "Polymer/polymer#2.0-preview",
+    "iron-input": "firmfirm/iron-input#^v2.0.0-alpha.1",
     "paper-input": "PolymerElements/paper-input#2.0-preview",
     "paper-toast": "PolymerElements/paper-toast#2.0-preview",
     "f-i18n": "^2.0.0",
@@ -26,6 +27,7 @@
   },
   "resolutions": {
     "webcomponentsjs": "v1",
-    "polymer": "2.0-preview"
+    "polymer": "2.0-preview",
+    "iron-input": "^v2.0.0-alpha.1"
   }
 }

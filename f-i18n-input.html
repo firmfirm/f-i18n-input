@@ -4,17 +4,6 @@
 <link rel="import" href="../f-i18n/f-i18n.html">
 
 <script>
-  // Hack around current paper-input bug
-  const proto = Object.getPrototypeOf(document.createElement('iron-input'));
-  proto.attached = function() {
-    this._inputElement = this.getEffectiveChildren()[0];
-    if (this._inputElement && this._inputElement.value) {
-      this.bindValue = this._inputElement.value;
-    }
-    this.fire('iron-input-ready');
-  };
-  proto.detached = function() {};
-
   window.FirmFirm = window.FirmFirm || {};
   FirmFirm.I18nInput = class I18nInput extends customElements.get('paper-input') {
     static get is() { return 'f-i18n-input'; }
@@ -23,19 +12,23 @@
         const baseClass = Object.getPrototypeOf(this.prototype).constructor;
         this._template = baseClass.template.cloneNode(true);
         // Hack around current paper-input bug
-        this._template.content.appendChild(html`
-          <style>
-            :host {
-              --paper-input-container-underline_-_display: none;
-            }
-            iron-input { display: flex; }
-            input { border: solid 1px gray; }
-            paper-input-error {
-              left: inherit;
-              right: inherit;
-            }
-          </style>
-        `);
+        const match = /Chrome\/(\d+)\..+/i.exec(navigator.userAgent);
+        const patch = !match || match.length <= 1 || parseInt(match[1]) < 54
+        if (patch) {
+          this._template.content.appendChild(html`
+            <style>
+              :host {
+                --paper-input-container-underline_-_display: none;
+              }
+              iron-input { display: flex; }
+              input { border: solid 1px gray; }
+              paper-input-error {
+                left: inherit;
+                right: inherit;
+              }
+            </style>
+          `);
+        }
         this._template.content.appendChild(html`
           <div>
             <f-i18n m="[[mLabel]]" value="{{label}}" provider></f-i18n>
