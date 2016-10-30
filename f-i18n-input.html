@@ -52,6 +52,11 @@
         },
       };
     }
+    validate() {
+      const result = super.validate();
+      this.autoValidate = !result;
+      return result;
+    }
   }
   customElements.define(FirmFirm.I18nInput.is, FirmFirm.I18nInput);
 </script>
