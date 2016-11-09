@@ -49,10 +49,18 @@
            * f-i18n message key for `error-message`, e.g. `"domain.message"`
            */
           mErrorMessage: String,
+          /**
+           * If false, skips the validation
+           */
+          validatorActive: {
+            type: Boolean,
+            value: true,
+          },
         },
       };
     }
     validate() {
+      if (!this.validatorActive) return true;
       const result = super.validate();
       this.autoValidate = !result;
       return result;
