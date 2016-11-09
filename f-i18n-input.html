@@ -59,11 +59,18 @@
         },
       };
     }
+    constructor() {
+      super();
+      this.keyBindings['enter:keydown'] = '_onEnter';
+    }
     validate() {
       if (!this.validatorActive) return true;
       const result = super.validate();
       this.autoValidate = !result;
       return result;
+    }
+    _onEnter() {
+      this.fire('enter');
     }
   }
   customElements.define(FirmFirm.I18nInput.is, FirmFirm.I18nInput);
