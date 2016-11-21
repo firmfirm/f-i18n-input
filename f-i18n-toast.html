@@ -11,7 +11,7 @@
         this._template = Object.getPrototypeOf(this.prototype).constructor.template;
         const content = this._template.content;
         content.appendChild(html`
-          <f-i18n provider m="[[m]]" value="{{_msg}}"></f-i18n>
+          <f-i18n provider m="[[m]]" params="[[params]]" value="{{_msg}}"></f-i18n>
         `);
       }
       return this._template;
@@ -23,6 +23,7 @@
            * `f-i18n` translation domain and key (e.g. `domain.key`).
            */
           m: String,
+          params: String,
           _msg: {
             type: String,
             observer: '_msgChanged',
