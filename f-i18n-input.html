@@ -57,6 +57,9 @@
             value: true,
           },
         },
+        listeners: {
+          'focus': '_onFocus',
+        },
       };
     }
     constructor() {
@@ -71,6 +74,12 @@
     }
     _onEnter() {
       this.fire('enter');
+    }
+    _onFocus() {
+      this.dispatchEvent(new Event('f-i18n-input-focus', {
+        bubbles: true,
+        composed: true,
+      }));
     }
   }
   customElements.define(FirmFirm.I18nInput.is, FirmFirm.I18nInput);
