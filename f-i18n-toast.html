@@ -8,7 +8,7 @@
     static get is() { return 'f-i18n-toast'; }
     static get template() {
       if (!this.hasOwnProperty('_template')) {
-        this._template = Object.getPrototypeOf(this.prototype).constructor.template;
+        this._template = Object.getPrototypeOf(this.prototype).constructor.template.cloneNode(true);
         const content = this._template.content;
         content.appendChild(html`
           <f-i18n provider m="[[m]]" params="[[params]]" value="{{_msg}}"></f-i18n>
@@ -16,20 +16,18 @@
       }
       return this._template;
     }
-    static get config() {
+    static get properties() {
       return {
-        properties: {
-          /**
-           * `f-i18n` translation domain and key (e.g. `domain.key`).
-           */
-          m: String,
-          params: String,
-          _msg: {
-            type: String,
-            observer: '_msgChanged',
-          },
+        /**
+         * `f-i18n` translation domain and key (e.g. `domain.key`).
+         */
+        m: String,
+        params: String,
+        _msg: {
+          type: String,
+          observer: '_msgChanged',
         },
-      }
+      };
     }
     _msgChanged(newMsg) {
       this.text = newMsg;

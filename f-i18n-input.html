@@ -38,28 +38,28 @@
       }
       return this._template;
     }
-    static get config() {
+    static get properties() {
       return {
-        properties: {
-          /**
-           * f-i18n message key for `label`, e.g. `"domain.message"`
-           */
-          mLabel: String,
-          /**
-           * f-i18n message key for `error-message`, e.g. `"domain.message"`
-           */
-          mErrorMessage: String,
-          /**
-           * If false, skips the validation
-           */
-          validatorActive: {
-            type: Boolean,
-            value: true,
-          },
+        /**
+         * f-i18n message key for `label`, e.g. `"domain.message"`
+         */
+        mLabel: String,
+        /**
+         * f-i18n message key for `error-message`, e.g. `"domain.message"`
+         */
+        mErrorMessage: String,
+        /**
+         * If false, skips the validation
+         */
+        validatorActive: {
+          type: Boolean,
+          value: true,
         },
-        listeners: {
-          'focus': '_onFocus',
-        },
+      };
+    }
+    static get listeners() {
+      return {
+        'focus': '_onFocus',
       };
     }
     constructor() {
