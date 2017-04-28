@@ -1,6 +1,5 @@
 {
   "name": "f-i18n-paper",
-  "version": "2.0.5",
   "description": "paper-elements extensions, using f-i18n for text like labels",
   "keywords": [
     "web-components",
@@ -13,21 +12,19 @@
   "homepage": "https://github.com/firmfirm/f-i18n-paper/",
   "main": "f-i18n-input.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#2.0-preview",
-    "iron-input": "firmfirm/iron-input#^v2.0.0-alpha.1",
+    "polymer": "git@github.com:firmfirm/polymer.git#v2.0.0-rc.8",
     "paper-input": "PolymerElements/paper-input#2.0-preview",
     "paper-toast": "PolymerElements/paper-toast#2.0-preview",
-    "f-i18n": "^2.0.0",
-    "html-tagged-template": "firmfirm/html-tagged-template#^2.0.1"
+    "f-i18n": "~2.0.9",
+    "html-tagged-template": "~2.0.2"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#2.0-preview",
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#2.0-preview",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#v1"
+    "webcomponentsjs": "^1.0.0-rc.11"
   },
   "resolutions": {
-    "webcomponentsjs": "v1",
-    "polymer": "2.0-preview",
-    "iron-input": "^v2.0.0-alpha.1"
+    "webcomponentsjs": "^1.0.0-rc.11",
+    "polymer": "v2.0.0-rc.8"
   }
 }
