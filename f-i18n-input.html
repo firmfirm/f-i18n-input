@@ -62,9 +62,13 @@
         'focus': '_onFocus',
       };
     }
-    constructor() {
-      super();
-      this.keyBindings['enter:keydown'] = '_onEnter';
+    get keyBindings() {
+      if (!this._fkeyBindings) {
+        this._fkeyBindings = Object.assign({}, super.keyBindings, {
+          'enter:keydown': '_onEnter',
+        });
+      }
+      return this._fkeyBindings;
     }
     validate() {
       if (!this.validatorActive) return true;
