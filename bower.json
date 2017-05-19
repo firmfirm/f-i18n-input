@@ -12,19 +12,15 @@
   "homepage": "https://github.com/firmfirm/f-i18n-paper/",
   "main": "f-i18n-input.html",
   "dependencies": {
-    "polymer": "git@github.com:firmfirm/polymer.git#v2.0.0-rc.8",
-    "paper-input": "PolymerElements/paper-input#2.0-preview",
-    "paper-toast": "PolymerElements/paper-toast#2.0-preview",
+    "polymer": "~2.0.0",
+    "paper-input": "~2.0.0",
+    "paper-toast": "~2.0.0",
     "f-i18n": "~2.0.9",
     "html-tagged-template": "~2.0.2"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#2.0-preview",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#2.0-preview",
-    "webcomponentsjs": "^1.0.0-rc.11"
-  },
-  "resolutions": {
-    "webcomponentsjs": "^1.0.0-rc.11",
-    "polymer": "v2.0.0-rc.8"
+    "iron-component-page": "~2.0.0",
+    "iron-demo-helpers": "~2.0.0",
+    "webcomponentsjs": "~1.0.0"
   }
 }
