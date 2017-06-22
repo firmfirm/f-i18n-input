@@ -13,9 +13,9 @@
   "main": "f-i18n-input.html",
   "dependencies": {
     "polymer": "~2.0.0",
-    "paper-input": "git@github.com:firmfirm/paper-input.git#v2.0.0",
+    "paper-input": "PolymerElements/paper-input#~2.0.0",
     "paper-toast": "~2.0.0",
-    "f-i18n": "~2.0.9",
+    "f-i18n": "~2.0.12",
     "html-tagged-template": "~2.0.2"
   },
   "devDependencies": {
