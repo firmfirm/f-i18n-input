@@ -1,0 +1,196 @@
+<link rel="import" href="../finterface-key-value-store/finterface-key-value-store.html">
+
+<!--
+-->
+
+<script>
+
+window.FirmFirm = window.FirmFirm || {};
+FirmFirm.FSingleton = (function() {
+  'use strict'
+  let instances = [];
+  let state = {};
+
+  /**
+   * `<f-singleton>` is a Polymer element that helps implementing singleton pattern declaratively.
+   *
+   * Common use case is to provide shared state in your elements (e.g. for configuration).
+   *
+   * ## Private data
+   *
+   * Every instance of `<f-singleton>` points to the same `data` object. **Do not**
+   * use Polymer's two-way binding to set properties of `data` directly.
+   * Instead, if absolutely needed, call methods on `<f-singleton>` element like this:
+   *
+   *   this.$$('f-singleton').set('data.prop', 'val')
+   *
+   * Supported methods are:
+   *   - `set(path, value)`
+   *   - `push(path, item)`
+   *   - `notifyPath(path, value, fromAbove)`
+   *
+   * However, in most cases you will be good with just `key` and `value` properties.
+   *
+   * Example:
+   *
+   *     <f-singleton key="myKey" value="something"></f-singleton>
+   *     <f-singleton key="myKey" value="{{myValue}}"></f-singleton>
+   *     <p>[[myValue]]</p>
+   *
+   * `key` is a property name to bind `value` to,
+   * e.g. `key="myKey"` would bind `value` to `data.myKey`.
+   *
+   * You can also use deep keys, like `key="myObj.myProp"`.
+   *
+   * @polymerElement
+   * @mixes Polymer.MutableData
+   * @mixes FInterface.KeyValueStore
+   * @demo demo/index.html
+   */
+  class FSingleton extends Polymer.MutableData(FInterface.KeyValueStore(Polymer.Element)) {
+    static get is() { return 'f-singleton'; }
+    static get properties() {
+      return {
+        /**
+         * Shared data object
+         */
+        data: {
+          type: Object,
+          readOnly: true,
+          notify: true,
+          value: () => state,
+        }
+      };
+    }
+
+    static get observers() {
+      return [
+        '_dataChanged(data.*)',
+        '_keyChanged(key)',
+        '_valueChanged(value)'
+      ];
+    }
+
+    constructor() {
+      super();
+      var override = (originalFn, notifyAll) => (...args) => {
+        const result = originalFn.apply(this, args);
+        if (args[0].split(".")[0] === "data") {
+          notifyAll(args, result);
+        }
+        return result;
+      };
+
+      this._originalNotifyPath = this.notifyPath;
+      var notifyPathAll = (args) => this._invokeInstances(this._originalNotifyPath, args);
+
+      this.set = override(this.set, notifyPathAll);
+      this.notifyPath = override(this.notifyPath, notifyPathAll);
+
+      this._originalNotifySplices = this.notifySplices;
+      var notifySplicesAll = (args) => this._invokeInstances(this._originalNotifySplices, args);
+      this.notifySplices = override(this.notifySplices, notifySplicesAll);
+
+      const overrideSplices = (originalFn, getSplice) => override(
+        originalFn,
+        ([path, ...args], result) => {
+          const object = this.get(path);
+          notifySplicesAll([
+            path,
+            [Object.assign({type: 'splice', object}, getSplice(args, object, result))],
+          ]);
+        }
+      );
+
+      this.splice = overrideSplices(this.splice, ([index, deleteCount, ...items], array, removed) => ({
+        removed, index, addedCount: items.length,
+      }));
+      this.push = overrideSplices(this.push, ([...pushed], array) => ({
+        removed: [],
+        addedCount: pushed.length,
+        index: array.length - pushed.length
+      }));
+      this.pop = overrideSplices(this.pop, (_, array, result) => ({
+        removed: [result],
+        addedCount: 0,
+        index: array.length,
+      }));
+      this.shift = overrideSplices(this.shift, (_, array, result) => ({
+        removed: [result],
+        addedCount: 0,
+        index: 0,
+      }));
+      this.unshift = overrideSplices(this.unshift, ([...items], array, result) => ({
+        removed: [],
+        addedCount: items.length,
+        index: 0,
+      }));
+    }
+
+    connectedCallback() {
+      super.connectedCallback();
+      instances.push(this);
+    }
+
+    disconnectedCallback() {
+      super.disconnectedCallback();
+      instances.splice(instances.indexOf(this), 1);
+    }
+
+    _invokeInstances(fn, args) {
+      for (var i = 0; i < instances.length; i++) {
+        let instance = instances[i];
+        if (instance !== this) {
+          fn.apply(instance, args);
+        }
+      }
+    }
+
+    _keyChanged(key) {
+      if (!key) return;
+      const newValue = key.split('.').reduce(
+        (data, key) => data ? data[key] : null, this.data);
+      if (typeof newValue !== "undefined" && this.value !== newValue) {
+        this.value = newValue;
+      }
+    }
+
+    _valueChanged(value) {
+      if (!this.key || typeof value === "undefined") return;
+
+      const parts = this.key.split('.');
+      const currentValue = parts.reduce((d, k) => d && d[k], this.data);
+      if (currentValue !== value) {
+        // Create path in data object if doesnt exist
+        parts.pop();
+        parts.reduce(function(data, key) {
+          if (!data[key]) data[key] = {};
+          return data[key];
+        }, this.data);
+        this.set('data.' + this.key, value);
+      }
+    }
+
+    _dataChanged(changeRecord) {
+      if (!this.key) return;
+      var path = 'data.' + this.key;
+      if (changeRecord.path === path) {
+        // Exact match, dirty check
+        if (this.value !== changeRecord.value) {
+          this.value = changeRecord.value;
+        }
+      } else if (changeRecord.path.startsWith(path)) {
+        // Part of value changed
+        var valuePath = changeRecord.path.replace(path, 'value');
+        this._originalNotifyPath(valuePath, changeRecord.value);
+      } else if (path.startsWith(changeRecord.path)) {
+        // The whole value changed - have to recalculate
+        this._keyChanged(this.key);
+      }
+    }
+  }
+  customElements.define(FSingleton.is, FSingleton);
+  return FSingleton;
+})();
+
+</script>

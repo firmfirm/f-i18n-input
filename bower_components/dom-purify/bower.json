@@ -1,0 +1,31 @@
+{
+  "name": "dom-purify",
+  "authors": [
+    "Peter Kaske <p.kaske@gmail.com>",
+    "Martynas Kazlauskas <martynas@firmfirm.co>"
+  ],
+  "description": "Simple commponent that uses the DOMPurify library to sanitize it's content.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "html",
+    "sanitize",
+    "security"
+  ],
+  "main": "dom-purify.html",
+  "license": "MIT",
+  "homepage": "https://github.com/pkaske/dom-purify/",
+  "ignore": [
+    "/.*",
+    "/tests/"
+  ],
+  "dependencies": {
+    "polymer": "~2.0.0",
+    "dompurify": "firmfirm/dompurify#v0.8.5"
+  },
+  "devDependencies": {
+    "iron-component-page": "~2.0.0",
+    "webcomponentsjs": "~1.0.0"
+  }
+}

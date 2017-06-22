@@ -1,0 +1,35 @@
+{
+  "name": "f-i18n-paper",
+  "description": "paper-elements extensions, using f-i18n for text like labels",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "i18n",
+    "input",
+    "paper-input"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/firmfirm/f-i18n-paper/",
+  "main": "f-i18n-input.html",
+  "dependencies": {
+    "polymer": "~2.0.0",
+    "paper-input": "PolymerElements/paper-input#~2.0.0",
+    "paper-toast": "~2.0.0",
+    "f-i18n": "~2.0.12",
+    "html-tagged-template": "~2.0.2"
+  },
+  "devDependencies": {
+    "iron-component-page": "~2.0.0",
+    "iron-demo-helpers": "~2.0.0",
+    "webcomponentsjs": "~1.0.0"
+  },
+  "_release": "f8e7554a6a",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f8e7554a6adc57636349e0e00edbff0653b7fc69"
+  },
+  "_source": "git@github.com:firmfirm/f-i18n-paper.git",
+  "_target": "master",
+  "_originalSource": "git@github.com:firmfirm/f-i18n-paper.git"
+}

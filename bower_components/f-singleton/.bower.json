@@ -1,0 +1,38 @@
+{
+  "name": "f-singleton",
+  "authors": [
+    "Martynas <martynas@firmfirm.co>"
+  ],
+  "description": "Polymer element that helps implementing singleton pattern declaratively. Common use case is to provide shared state in your elements (e.g. for configuration).",
+  "keywords": [
+    "shared",
+    "state",
+    "singleton",
+    "polymer",
+    "web-components"
+  ],
+  "main": "f-singleton.html",
+  "homepage": "https://github.com/firmfirm/f-singleton/",
+  "ignore": [
+    "/.*"
+  ],
+  "dependencies": {
+    "polymer": "~2.0.0",
+    "finterface-key-value-store": "~2.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "~2.0.0",
+    "webcomponentsjs": "~1.0.0",
+    "web-component-tester": "~6.0.0"
+  },
+  "version": "2.0.10",
+  "_release": "2.0.10",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.10",
+    "commit": "3ecb37a5a0c4eefa1971535073da258f64c70a10"
+  },
+  "_source": "https://github.com/firmfirm/f-singleton.git",
+  "_target": "~2.0.0",
+  "_originalSource": "f-singleton"
+}

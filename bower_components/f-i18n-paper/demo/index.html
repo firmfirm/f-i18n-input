@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <title>f-i18n-input demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../f-i18n/f-i18n-domain.html">
+
+    <link rel="import" href="../f-i18n-input.html">
+    <link rel="import" href="../f-i18n-toast.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+
+    <div class="vertical-section-container centered">
+      <h3>Basic f-i18n-input Demo</h3>
+      <demo-snippet>
+        <template>
+          <dom-bind>
+            <template>
+              <f-i18n-domain domain="test" messages-url="lang" locale="en"></f-i18n-domain>
+              <f-i18n-input required m-label="test.label" m-error-message="test.error-message" auto-validate required value="{{value}}"></f-i18n-input>
+              <p>Value: [[value]]</p>
+              <f-i18n-toast required m="test.toast" opened duration="1000000"></f-i18n-toast>
+            </template>
+          </dom-bind>
+        </template>
+      </demo-snippet>
+    </div>
+
+  </body>
+</html>
