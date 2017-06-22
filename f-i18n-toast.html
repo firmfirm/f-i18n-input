@@ -11,6 +11,7 @@
         this._template = Object.getPrototypeOf(this.prototype).constructor.template.cloneNode(true);
         const content = this._template.content;
         content.appendChild(html`
+          <style>#label {vertical-align: middle;}</style>
           <f-i18n provider m="[[m]]" params="[[params]]" value="{{_msg}}"></f-i18n>
         `);
       }
