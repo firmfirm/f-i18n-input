@@ -57,10 +57,9 @@
         },
       };
     }
-    static get listeners() {
-      return {
-        'focus': '_onFocus',
-      };
+    ready() {
+      super.ready();
+      this.addEventListener('focus', this._onFocus.bind(this));
     }
     get keyBindings() {
       if (!this._fkeyBindings) {
