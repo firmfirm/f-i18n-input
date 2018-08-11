@@ -1,6 +1,6 @@
 {
   "name": "f-i18n-paper",
-  "version": "2.5.0",
+  "version": "2.5.1",
   "description": "paper-elements extensions, using f-i18n for text like labels",
   "scripts": {
     "start": "polymer serve --npm"
