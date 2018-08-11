@@ -1,0 +1,29 @@
+{
+  "name": "f-i18n-paper",
+  "version": "2.5.0",
+  "description": "paper-elements extensions, using f-i18n for text like labels",
+  "scripts": {
+    "start": "polymer serve --npm"
+  },
+  "keywords": [
+    "web-components",
+    "polymer",
+    "i18n",
+    "input",
+    "paper-input"
+  ],
+  "homepage": "https://github.com/firmfirm/f-i18n-paper/",
+  "main": "f-i18n-input.js",
+  "license": "MIT",
+  "dependencies": {
+    "@polymer/paper-input": "^3.0.0-pre.18",
+    "@polymer/paper-toast": "^3.0.0-pre.18",
+    "@polymer/polymer": "^3.0.0",
+    "f-i18n": "^2.5.1"
+  },
+  "devDependencies": {
+    "@polymer/iron-component-page": "^3.0.0-pre.18",
+    "@polymer/iron-demo-helpers": "^3.0.0-pre.18",
+    "@webcomponents/webcomponentsjs": "^2.0.0"
+  }
+}
