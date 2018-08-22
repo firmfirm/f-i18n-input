@@ -19,7 +19,7 @@
     "@polymer/paper-input": "^3.0.0-pre.18",
     "@polymer/paper-toast": "^3.0.0-pre.18",
     "@polymer/polymer": "^3.0.0",
-    "f-i18n": "^2.5.1"
+    "f-i18n": "^2.5.2"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "^3.0.0-pre.18",

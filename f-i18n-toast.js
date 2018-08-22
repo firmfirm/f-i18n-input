@@ -31,9 +31,6 @@ FirmFirm.I18nToast = class I18nToast extends customElements.get('paper-toast') {
       },
     };
   }
-  static get observers() {
-    return ['_textChanged(text)'];
-  }
   _msgChanged(newMsg) {
     this.text = newMsg;
     this._openedChanged(); // triggers resize
